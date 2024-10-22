@@ -33,6 +33,7 @@ router.post("/", upload.single("image"), async (req, res) => {
     await newPost.save();
     res.status(201).json(newPost);
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: error.message });
   }
 });
