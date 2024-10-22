@@ -24,25 +24,9 @@ const deleteFile = (filePath) => {
   });
 };
 
-// router.post("/", upload.single("image"), async (req, res) => {
-//   const { title, description } = req.body;
-//   const image = req.file.path;
-//   try {
-//     const newPost = new Post({ title, description, image });
-//     await newPost.save();
-//     res.status(201).json(newPost);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ message: error.message });
-//   }
-// });
-
-router.post("/", async (req, res) => {
-  // const { title, description } = req.body;
-  // console.log(title, description)
-  const image = "abcd";
-  const title = "title 1";
-  const description = "desc 1";
+router.post("/", upload.single("image"), async (req, res) => {
+  const { title, description } = req.body;
+  const image = req.file.path;
   try {
     const newPost = new Post({ title, description, image });
     await newPost.save();
@@ -52,6 +36,22 @@ router.post("/", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
+
+// router.post("/", async (req, res) => {
+//   // const { title, description } = req.body;
+//   // console.log(title, description)
+//   const image = "abcd";
+//   const title = "title 1";
+//   const description = "desc 1";
+//   try {
+//     const newPost = new Post({ title, description, image });
+//     await newPost.save();
+//     res.status(201).json(newPost);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ message: error.message });
+//   }
+// });
 
 router.get("/", async (req, res) => {
   try {
